@@ -1,0 +1,51 @@
+=== INICIO DOS TESTES DE CRUD - Thu Aug  6 11:58:29 PM UTC 2026 ===
+
+1. CADASTRANDO PRIMEIRO VEICULO...
+HTTP/1.1 201 Created
+X-Powered-By: Express
+Content-Type: application/json; charset=utf-8
+Content-Length: 87
+ETag: W/"57-j9JdA9VpHUA9ZTcvuQ9Oe31xsns"
+Date: Thu, 06 Aug 2026 23:58:29 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"id":3,"placa":"KLL-9090","montadora":"Volvo","modelo":"FH 540","status":"DISPONIVEL"}
+
+2. CADASTRANDO SEGUNDO VEICULO...
+HTTP/1.1 201 Created
+X-Powered-By: Express
+Content-Type: application/json; charset=utf-8
+Content-Length: 85
+ETag: W/"55-6vA6kIl5bnbvzwSR1NPkCJBdEns"
+Date: Thu, 06 Aug 2026 23:58:29 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"id":4,"placa":"MNO-3333","montadora":"DAF","modelo":"XF 530","status":"DISPONIVEL"}
+
+3. ATUALIZANDO STATUS DO VEICULO ID 3...
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: application/json; charset=utf-8
+Content-Length: 140
+ETag: W/"8c-WiyL+buMzN4tCNM+MXQ0/b07Gyo"
+Date: Thu, 06 Aug 2026 23:58:29 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"mensagem":"Status atualizado com sucesso!","veiculo":{"id":3,"placa":"KLL-9090","montadora":"Volvo","modelo":"FH 540","status":"EM_ROTA"}}
+
+4. REMOVENDO VEICULO ID 4...
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: application/json; charset=utf-8
+Content-Length: 49
+ETag: W/"31-qNvbusEzll80eN5vHaRO13cTRmo"
+Date: Thu, 06 Aug 2026 23:58:29 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"mensagem":"Veiculo ID 4 removido com sucesso."}
+
+=== FIM DOS TESTES - Thu Aug  6 11:58:29 PM UTC 2026 ===

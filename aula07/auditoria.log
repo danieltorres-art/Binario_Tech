@@ -1,0 +1,14 @@
+=== AUDITORIA DE ROTAS DA API - BINÁRIO TECH ===
+Data da execução: Thu Aug 20 03:00:14 AM UTC 2026
+----------------------------------------------------
+
+[1] Checando Rota Scania...
+
+
+[2] Checando Rota Mercedes...
+
+
+[3] Checando Rota Inexistente (404)...
+
+
+=== AUDITORIA CONCLUÍDA ===

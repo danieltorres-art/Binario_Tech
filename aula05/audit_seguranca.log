@@ -1,0 +1,17 @@
+=== AUDITORIA DE SEGURANÇA DA API ===
+Data: Sat Aug  8 12:28:35 AM UTC 2026
+-----------------------------------
+
+[1] Tentativa SEM chave de API:
+{"erro":"Acesso nao autorizado. Header 'X-API-KEY' invalido ou ausente."}
+
+[2] Tentativa com chave INCORRETA:
+{"erro":"Acesso nao autorizado. Header 'X-API-KEY' invalido ou ausente."}
+
+[3] Tentativa com chave VAZIA:
+{"erro":"Acesso nao autorizado. Header 'X-API-KEY' invalido ou ausente."}
+
+[4] Tentativa com chave VÁLIDA:
+[{"id":1,"nome":"Carlos Silva","cnh":"12345678900","categoria":"E","ativo":true},{"id":2,"nome":"Ana Pereira","cnh":"98765432100","categoria":"D","ativo":true},{"id":3,"nome":"Roberto Souza","categoria":"E","ativo":true},{"id":4,"nome":"Roberto Souza","categoria":"E","ativo":true},{"id":5,"nome":"João Teste","categoria":"B","ativo":true}]
+
+=== FIM DA AUDITORIA ===
