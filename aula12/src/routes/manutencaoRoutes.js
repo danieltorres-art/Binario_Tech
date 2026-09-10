@@ -1,6 +1,7 @@
-const express = require('express');
+import express from 'express';
+import manutencaoController from '../controllers/manutencaoController.js';
+
 const router = express.Router();
-const manutencaoController = require('../controllers/manutencaoController');
 
 router.post('/', manutencaoController.criar);
 router.get('/', manutencaoController.listarComFiltros);
@@ -9,4 +10,4 @@ router.post('/:id/pecas', manutencaoController.adicionarPeca);
 router.patch('/:id/status', manutencaoController.atualizarStatus);
 router.delete('/:id', manutencaoController.excluir);
 
-module.exports = router;
+export default router;

@@ -1,4 +1,4 @@
-const Manutencao = require('../models/Manutencao');
+import Manutencao from '../models/Manutencao.js';
 
 const manutencaoController = {
 	  criar: async (req, res) => {
@@ -100,4 +100,27 @@ const manutencaoController = {
 		    }
 };
 
-module.exports = manutencaoController;
+// Controller para adicionar um subdocumento de peça ao array pecasSubstituidas
+export const adicionarPeca = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const novaPeca = req.body;
+
+    // Utiliza o operador $push do MongoDB
+    const manutencaoAtualizada = await Manutencao.findByIdAndUpdate(
+      id,
+      { $push: { pecasSubstituidas: novaPeca } },
+      { new: true, runValidators: true } // 'new: true' retorna o documento já atualizado
+    );
+
+    if (!manutencaoAtualizada) {
+      return res.status(404).json({ mensagem: 'Manutenção não encontrada.' });
+    }
+
+    return res.status(200).json(manutencaoAtualizada);
+  } catch (error) {
+    return res.status(400).json({ mensagem: 'Erro ao adicionar peça.', erro: error.message });
+  }
+};
+
+export default manutencaoController;
