@@ -6,7 +6,7 @@ const alertaRoutes =
 require('./src/routes/alertaRoutes');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3006;
 
 app.use(cors());
 app.use(express.json());
