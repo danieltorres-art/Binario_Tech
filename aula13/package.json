@@ -1,0 +1,10 @@
+{
+	"name": "aula13",
+	"version": "1.0.0",
+	"description": "Validação de Entrada e Tratamento de Erros - Binario Tech",
+	"main": "server.js",
+	"scripts": {
+		"start": {
+			"start": "node server.js"
+		},
+		"dependencies": 
