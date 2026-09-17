@@ -1,17 +1,19 @@
 const express = require('express');
 const router = express.Router();
 const authController = require('../controllers/authController');
-const validarJWT = require('../middlewares/validarJWT');
+const authMiddleware = require('../middlewares/authMiddleware'); // ou o caminho do seu middleware
 
-// Questões 1 e 2
+// Questão 1
 router.post('/register', authController.register);
+
+// Questão 2
 router.post('/login', authController.login);
 
-// QUESTÃO 3: Rota protegida com JWT
-router.get('/relatorio', validarJWT, (req, res) => {
-  res.status(200).json({
-    mensagem: 'Relatório gerado com sucesso!',
-    usuario: req.user
+// Questão 3 - Rota Protegida
+router.get('/relatorio', authMiddleware, (req, res) => {
+  res.json({
+    mensagem: 'Acesso autorizado ao relatório!',
+    usuarioId: req.userId
   });
 });
 
