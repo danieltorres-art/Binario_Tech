@@ -1,9 +1,16 @@
-=== RELATÓRIO DE PROCESSOS NODE.JS - Thu Sep 17 01:39:37 AM UTC 2026 ===
-root         700  0.0  0.0   9196  4188 ?        S    01:22   0:00 runuser -l daniel_t_santos -c export GOPATH=/home/daniel_t_santos/gopath:/google/gopath HOME=/home/daniel_t_santos CLOUD_SHELL=true EDITOR_IN_CLOUD_SHELL=true CLOUD_CODE_CLOUD_SHELL_AUTHENTICATION='true' CONSOLIDATE_GCA_SPARKS='true' GEMINI_DEFAULT_PROJECT='cloudshell-gca' MINIKUBE_FORCE_SYSTEMD=true MINIKUBE_HOME=/google/minikube MINIKUBE_WANTUPDATENOTIFICATION=false NEW_GCA_AUTH_FLOW=true  USE_GKE_GCLOUD_AUTH_PLUGIN=True USE_PARTITIONED_COOKIES=true USER_EMAIL='daniel.t.santos@edu.senai.br' PATH=/opt/gradle/bin:/opt/maven/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/go/bin:/usr/local/node_packages/node_modules/.bin:/home/daniel_t_santos/gopath/bin:/google/gopath/bin:/home/daniel_t_santos/.gems/bin CLOUD_SHELL_FRAME_ANCESTORS="https://*.corp.google.com:* https://*.sandbox.google.com:* https://console.cloud.google.com https://console.firebase.google.com https://ide.cloud.google.com https://shell.cloud.google.com https://ssh.cloud.google.com"  && cd /google/devshell/editor/code-oss-for-cloud-shell && ./bin/codeoss-cloudshell --host=0.0.0.0 --port=971
-daniel_+     729  0.5  1.5 1763284 129276 ?      Sl   01:22   0:05 /google/devshell/editor/code-oss-for-cloud-shell/node /google/devshell/editor/code-oss-for-cloud-shell/out/server-main.js --host=0.0.0.0 --port=971
-daniel_+    1289  0.0  0.7 1448984 63552 ?       Sl   01:22   0:00 /google/devshell/editor/code-oss-for-cloud-shell/node /google/devshell/editor/code-oss-for-cloud-shell/out/bootstrap-fork --type=fileWatcher
-daniel_+    1526  5.8 13.5 19470768 1103376 ?    Sl   01:22   0:58 /google/devshell/editor/code-oss-for-cloud-shell/node --dns-result-order=ipv4first /google/devshell/editor/code-oss-for-cloud-shell/out/bootstrap-fork --type=extensionHost --transformURIs --useHostProxy=false --supportGlobalNavigator
-daniel_+    1562  0.0  0.8 1489144 66216 ?       Sl   01:23   0:00 /google/devshell/editor/code-oss-for-cloud-shell/node /google/devshell/editor/code-oss-for-cloud-shell/extensions/json-language-features/server/dist/node/jsonServerMain --node-ipc --clientProcessId=1526
-daniel_+    1633  0.1  0.9 1466408 73424 ?       Sl   01:23   0:01 /google/devshell/editor/code-oss-for-cloud-shell/node /google/devshell/editor/code-oss-for-cloud-shell/out/bootstrap-fork --type=ptyHost --logsPath /home/daniel_t_santos/.codeoss/data/logs/20260917T012244
-daniel_+    2008  0.7  7.3 2227552 595412 ?      Sl   01:23   0:07 /google/devshell/editor/code-oss-for-cloud-shell/node /google/devshell/editor/code-oss-for-cloud-shell/extensions/cloudcode/dist/server/server.js --node-ipc --clientProcessId=1526
-daniel_+    2016  0.8  2.4 18603480 203088 ?     Sl   01:23   0:08 /google/devshell/editor/code-oss-for-cloud-shell/node /google/devshell/editor/code-oss-for-cloud-shell/extensions/geminicodeassist/agent/a2a-server.mjs
+=== RELATÓRIO DE PROCESSOS NODE.JS - qui 17 set 2026 10:05:19 -03 ===
+bruno.r+   82506  0.0  0.0 1015192 65184 ?       Sl   set10   0:01 node server.js
+luis.he+   92260  0.0  0.0 1016432 64008 ?       Sl   set10   0:01 node server.js
+julia.s+  106985  0.0  0.0 1014556 64844 ?       Sl   set10   0:01 node server.js
+gabriel+  115010  0.0  0.0 1013804 63016 ?       Sl   set10   0:01 node servidor_check.js
+myguel.+  115056  0.0  0.0 1013904 63668 ?       Sl   set10   0:01 node servidor_check.js
+bruno.r+  115064  0.0  0.0 1014016 63640 ?       Sl   set10   0:01 node servidor_check.js
+murilo.+  115111  0.0  0.0 1016692 64172 ?       Sl   set10   0:01 node servidor_check.js
+maely.p+  115292  0.0  0.0 994396 52440 ?        Sl   set10   0:01 node servidor_check.js
+daniel.+  115355  0.0  0.0 1013740 62976 ?       Sl   set10   0:01 node servidor_check.js
+murilo.+  116842  0.0  0.0 1013768 63408 ?       Sl   set10   0:01 node servidor_check.js
+maria.m+  118417  0.0  0.0 1013508 62156 ?       Sl   set10   0:01 node servidor_check.js
+nicolla+  121279  0.0  0.0 1014380 62120 ?       Sl   set10   0:01 node servidor_check.js
+nicolla+  121523  0.0  0.0 1014128 62508 ?       Sl   set10   0:01 node servidor_check.js
+root      151680  0.0  0.0   2576  2096 ?        Ss   set15   0:00 fusermount3 -o rw,nosuid,nodev,fsname=portal,auto_unmount,subtype=portal -- /run/user/1001/doc
+maria.e+  179883  0.2  0.0 1015132 58984 pts/2   Sl+  10:04   0:00 node servidor_check.js
