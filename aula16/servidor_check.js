@@ -16,3 +16,4 @@ app.get('/api/v1/status-servidor', (req, res) => {
 app.listen(PORT, () => {
 	console.log(`[Binario Tech] SERVIDOR DE VALIDAÇÃO DA AULA 16 ATIVO NA PORTA ${PORT}`);
 });
+// Teste de alteracao no Cloud Shell
