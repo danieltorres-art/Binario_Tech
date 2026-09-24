@@ -1,33 +1,20 @@
-#!/bin/bash
+require('dotenv').config();
+const express = require('express');
+const mongoose = require('mongoose');
 
-URL="http://localhost:3006/api/v1/prova"
-EMAIL="aluno_$(date +%s)@binariotech.com"
-SENHA="senhaSegura123"
+const app = express();
+app.use(express.json());
 
-echo -e "\033[1;33m==================================================\033[0m"
-echo -e "\033[1;36m1. CADASTRANDO USUÁRIO NA ROTA /register\033[0m"
-echo -e "\033[1;33m==================================================\033[0m"
-curl -s -X POST "$URL/register" \
-  -H "Content-Type: application/json" \
-  -d "{\"email\":\"$EMAIL\",\"senha\":\"$SENHA\"}" | jq -C .
+// Conexão com o MongoDB
+mongoose.connect(process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/binario_tech_prova')
+  .then(() => console.log('MongoDB conectado!'))
+  .catch((error) => console.error('Erro ao conectar no MongoDB:', error));
 
-echo -e "\n\033[1;33m==================================================\033[0m"
-echo -e "\033[1;36m2. REALIZANDO LOGIN NA ROTA /login\033[0m"
-echo -e "\033[1;33m==================================================\033[0m"
-RESPONSE=$(curl -s -X POST "$URL/login" \
-  -H "Content-Type: application/json" \
-  -d "{\"email\":\"$EMAIL\",\"senha\":\"$SENHA\"}")
+// Rotas da prova
+const provaRoutes = require('./src/routes/prova');
+app.use('/api/v1/prova', provaRoutes);
 
-echo "$RESPONSE" | jq -C .
-
-TOKEN=$(echo "$RESPONSE" | jq -r '.token')
-
-echo -e "\n\033[1;33m==================================================\033[0m"
-echo -e "\033[1;36m3. ACESSANDO ROTA PROTEGIDA /relatorio COM O TOKEN\033[0m"
-echo -e "\033[1;33m==================================================\033[0m"
-curl -s -X GET "$URL/relatorio" \
-  -H "Authorization: Bearer $TOKEN" | jq -C .
-
-echo -e "\n\033[1;32m==================================================\033[0m"
-echo -e "\033[1;32mTESTE CONCLUÍDO COM SUCESSO!\033[0m"
-echo -e "\033[1;32m==================================================\033[0m"
+const PORT = process.env.PORT || 3006;
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
+});

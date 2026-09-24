@@ -1,0 +1,5 @@
+sex 18 set 2026 12:47:06 -03
+genesis
+               total       usada       livre    compart.  buff/cache  disponível
+Mem.:           62Gi       4,6Gi        23Gi       102Mi        34Gi        57Gi
+Swap:           63Gi          0B        63Gi
