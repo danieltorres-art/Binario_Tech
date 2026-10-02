@@ -1,21 +1,33 @@
 #!/bin/bash
 
-LOG_FILE="audit_seguranca.log"
+API_URL="http://localhost:3006/api/v1"
+CHAVE_VALIDA="binario-tech-secret-2026"
 
-echo "=== AUDITORIA DE SEGURANÇA DA API ===" > $LOG_FILE
-echo "Data: $(date)" >> $LOG_FILE
-echo "-----------------------------------" >> $LOG_FILE
+echo "=== INICIANDO AUDITORIA DE SEGURANÇA E ROTAS ==="
+echo ""
 
-echo -e "\n[1] Tentativa SEM chave de API:" >> $LOG_FILE
-curl -s http://localhost:3000/api/v1/motoristas >> $LOG_FILE
+# 1. Teste de Acesso Sem Chave (Deve retornar 401)
+echo -n "1. Testando GET /manutencoes sem chave... "
+STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$API_URL/manutencoes")
+echo "Status: $STATUS"
 
-echo -e "\n\n[2] Tentativa com chave INCORRETA:" >> $LOG_FILE
-curl -s -H "X-API-KEY: chave-invalida" http://localhost:3000/api/v1/motoristas >> $LOG_FILE
+# 2. Teste de Acesso Com Chave Válida (Deve retornar 200)
+echo -n "2. Testando GET /manutencoes com chave valida... "
+STATUS=$(curl -s -o /dev/null -w "%{http_code}" -H "X-API-KEY: $CHAVE_VALIDA" "$API_URL/manutencoes")
+echo "Status: $STATUS"
 
-echo -e "\n\n[3] Tentativa com chave VAZIA:" >> $LOG_FILE
-curl -s -H "X-API-KEY: " http://localhost:3000/api/v1/motoristas >> $LOG_FILE
+# 3. Teste de CNH Inválida (Deve retornar 400)
+echo -n "3. Testando POST /motoristas com CNH invalida... "
+STATUS=$(curl -s -o /dev/null -w "%{http_code}" -X POST "$API_URL/motoristas" \
+  -H "Content-Type: application/json" \
+  -H "X-API-KEY: $CHAVE_VALIDA" \
+  -d '{"nome": "Carlos", "cnh": "123"}')
+echo "Status: $STATUS"
 
-echo -e "\n\n[4] Tentativa com chave VÁLIDA:" >> $LOG_FILE
-curl -s -H "X-API-KEY: binario-tech-secret-2026" http://localhost:3000/api/v1/motoristas >> $LOG_FILE
+# 4. Teste de Rota Inexistente (Deve retornar 404)
+echo -n "4. Testando rota inexistente /clientes... "
+STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$API_URL/clientes")
+echo "Status: $STATUS"
 
-echo -e "\n\n=== FIM DA AUDITORIA ===" >> $LOG_FILE
+echo ""
+echo "=== AUDITORIA CONCLUÍDA ==="
