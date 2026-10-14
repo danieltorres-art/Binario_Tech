@@ -1,0 +1,14 @@
+{
+  "name": "prova_aula04",
+  "version": "1.0.0",
+  "description": "Prova Pratica 2 (Aula 04) - PBE1",
+  "main": "frota_api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.3.0"
+  }
+}

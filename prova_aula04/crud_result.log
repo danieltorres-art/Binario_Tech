@@ -1,5 +1,5 @@
 === INICIANDO TESTE AUTOMATIZADO DE CRUD ===
-Wed Oct 14 07:17:59 PM UTC 2026
+Wed Oct 14 07:34:52 PM UTC 2026
 --------------------------------------------
 
 [1] Cadastrando Veiculo 1...
@@ -7,24 +7,24 @@ HTTP/1.1 201 Created
 X-Powered-By: Express
 Content-Type: application/json; charset=utf-8
 Content-Length: 90
-ETag: W/"5a-gIwwa7Yb8X2B1a3K+/FTDsXJcJI"
-Date: Wed, 14 Oct 2026 19:17:59 GMT
+ETag: W/"5a-73quzSIf2/3UUS6A8TUPi9BwNQg"
+Date: Wed, 14 Oct 2026 19:34:52 GMT
 Connection: keep-alive
 Keep-Alive: timeout=5
 
-{"id":4,"placa":"AAA-1111","montadora":"Mercedes","modelo":"Actros","status":"DISPONIVEL"}
+{"id":3,"placa":"AAA-1111","montadora":"Mercedes","modelo":"Actros","status":"DISPONIVEL"}
 
 [2] Cadastrando Veiculo 2...
 HTTP/1.1 201 Created
 X-Powered-By: Express
 Content-Type: application/json; charset=utf-8
 Content-Length: 87
-ETag: W/"57-Nz+OrW32yfE7QbiywlABB0Y4x1U"
-Date: Wed, 14 Oct 2026 19:17:59 GMT
+ETag: W/"57-nZeQQWcRUaMu221oMWM0hmByioU"
+Date: Wed, 14 Oct 2026 19:34:52 GMT
 Connection: keep-alive
 Keep-Alive: timeout=5
 
-{"id":5,"placa":"BBB-2222","montadora":"Scania","modelo":"R 500","status":"DISPONIVEL"}
+{"id":4,"placa":"BBB-2222","montadora":"Scania","modelo":"R 500","status":"DISPONIVEL"}
 
 [3] Atualizando Veiculo 1...
 HTTP/1.1 200 OK
@@ -32,7 +32,7 @@ X-Powered-By: Express
 Content-Type: application/json; charset=utf-8
 Content-Length: 83
 ETag: W/"53-E6drEV/IW7M32OLBt9TlBkB4BB8"
-Date: Wed, 14 Oct 2026 19:17:59 GMT
+Date: Wed, 14 Oct 2026 19:34:52 GMT
 Connection: keep-alive
 Keep-Alive: timeout=5
 
@@ -44,7 +44,7 @@ X-Powered-By: Express
 Content-Type: application/json; charset=utf-8
 Content-Length: 44
 ETag: W/"2c-hz6NkCUsxVuqm6fmIVcfDgATWmI"
-Date: Wed, 14 Oct 2026 19:17:59 GMT
+Date: Wed, 14 Oct 2026 19:34:52 GMT
 Connection: keep-alive
 Keep-Alive: timeout=5
 
