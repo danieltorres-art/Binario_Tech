@@ -75,9 +75,8 @@ git add .
 git commit -m "Entrega Prova Pratica 2 - Exercicios 01 ao 08"
 git push origin main
 
-# ==========================================
+
 # PASSO A PASSO DA ENTREGA NO CLASSROOM
-# ==========================================
 # 1. Copie para o seu computador/telemovel os arquivos:
 #    - frota_api.js
 #    - teste_crud.sh
