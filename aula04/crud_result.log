@@ -1,51 +1,53 @@
-=== INICIO DOS TESTES DE CRUD - Thu Aug  6 11:58:29 PM UTC 2026 ===
+=== INICIANDO TESTE AUTOMATIZADO DE CRUD ===
+Wed Oct 14 07:17:59 PM UTC 2026
+--------------------------------------------
 
-1. CADASTRANDO PRIMEIRO VEICULO...
+[1] Cadastrando Veiculo 1...
+HTTP/1.1 201 Created
+X-Powered-By: Express
+Content-Type: application/json; charset=utf-8
+Content-Length: 90
+ETag: W/"5a-gIwwa7Yb8X2B1a3K+/FTDsXJcJI"
+Date: Wed, 14 Oct 2026 19:17:59 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"id":4,"placa":"AAA-1111","montadora":"Mercedes","modelo":"Actros","status":"DISPONIVEL"}
+
+[2] Cadastrando Veiculo 2...
 HTTP/1.1 201 Created
 X-Powered-By: Express
 Content-Type: application/json; charset=utf-8
 Content-Length: 87
-ETag: W/"57-j9JdA9VpHUA9ZTcvuQ9Oe31xsns"
-Date: Thu, 06 Aug 2026 23:58:29 GMT
+ETag: W/"57-Nz+OrW32yfE7QbiywlABB0Y4x1U"
+Date: Wed, 14 Oct 2026 19:17:59 GMT
 Connection: keep-alive
 Keep-Alive: timeout=5
 
-{"id":3,"placa":"KLL-9090","montadora":"Volvo","modelo":"FH 540","status":"DISPONIVEL"}
+{"id":5,"placa":"BBB-2222","montadora":"Scania","modelo":"R 500","status":"DISPONIVEL"}
 
-2. CADASTRANDO SEGUNDO VEICULO...
-HTTP/1.1 201 Created
-X-Powered-By: Express
-Content-Type: application/json; charset=utf-8
-Content-Length: 85
-ETag: W/"55-6vA6kIl5bnbvzwSR1NPkCJBdEns"
-Date: Thu, 06 Aug 2026 23:58:29 GMT
-Connection: keep-alive
-Keep-Alive: timeout=5
-
-{"id":4,"placa":"MNO-3333","montadora":"DAF","modelo":"XF 530","status":"DISPONIVEL"}
-
-3. ATUALIZANDO STATUS DO VEICULO ID 3...
+[3] Atualizando Veiculo 1...
 HTTP/1.1 200 OK
 X-Powered-By: Express
 Content-Type: application/json; charset=utf-8
-Content-Length: 140
-ETag: W/"8c-WiyL+buMzN4tCNM+MXQ0/b07Gyo"
-Date: Thu, 06 Aug 2026 23:58:29 GMT
+Content-Length: 83
+ETag: W/"53-E6drEV/IW7M32OLBt9TlBkB4BB8"
+Date: Wed, 14 Oct 2026 19:17:59 GMT
 Connection: keep-alive
 Keep-Alive: timeout=5
 
-{"mensagem":"Status atualizado com sucesso!","veiculo":{"id":3,"placa":"KLL-9090","montadora":"Volvo","modelo":"FH 540","status":"EM_ROTA"}}
+{"id":1,"placa":"ABC-1234","montadora":"Scania","modelo":"R450","status":"EM_ROTA"}
 
-4. REMOVENDO VEICULO ID 4...
+[4] Deletando Veiculo 2...
 HTTP/1.1 200 OK
 X-Powered-By: Express
 Content-Type: application/json; charset=utf-8
-Content-Length: 49
-ETag: W/"31-qNvbusEzll80eN5vHaRO13cTRmo"
-Date: Thu, 06 Aug 2026 23:58:29 GMT
+Content-Length: 44
+ETag: W/"2c-hz6NkCUsxVuqm6fmIVcfDgATWmI"
+Date: Wed, 14 Oct 2026 19:17:59 GMT
 Connection: keep-alive
 Keep-Alive: timeout=5
 
-{"mensagem":"Veiculo ID 4 removido com sucesso."}
+{"mensagem":"Veiculo removido com sucesso."}
 
-=== FIM DOS TESTES - Thu Aug  6 11:58:29 PM UTC 2026 ===
+=== TESTE CONCLUIDO ===

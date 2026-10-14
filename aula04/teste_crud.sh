@@ -1,31 +1,31 @@
 #!/bin/bash
 
-LOGFILE="crud_result.log"
+LOG_FILE="crud_result.log"
 
-echo "=== INICIO DOS TESTES DE CRUD - $(date) ===" > "$LOGFILE"
+echo "=== INICIANDO TESTE AUTOMATIZADO DE CRUD ===" > $LOG_FILE
+date >> $LOG_FILE
+echo "--------------------------------------------" >> $LOG_FILE
 
-# 1. Cadastrar primeiro veículo
-echo -e "\n1. CADASTRANDO PRIMEIRO VEICULO..." >> "$LOGFILE"
-curl -s -i -X POST http://localhost:3000/api/v1/veiculos \
+# 1. Cadastrar Veiculo 1
+echo -e "\n[1] Cadastrando Veiculo 1..." >> $LOG_FILE
+curl -s -i -X POST http://localhost:3006/api/v1/veiculos \
   -H "Content-Type: application/json" \
-  -d '{"placa":"KLL-9090","montadora":"Volvo","modelo":"FH 540"}' >> "$LOGFILE"
+  -d '{"montadora":"Mercedes","modelo":"Actros","placa":"AAA-1111","status":"DISPONIVEL"}' >> $LOG_FILE
 
-# 2. Cadastrar segundo veículo
-echo -e "\n\n2. CADASTRANDO SEGUNDO VEICULO..." >> "$LOGFILE"
-curl -s -i -X POST http://localhost:3000/api/v1/veiculos \
+# 2. Cadastrar Veiculo 2
+echo -e "\n\n[2] Cadastrando Veiculo 2..." >> $LOG_FILE
+curl -s -i -X POST http://localhost:3006/api/v1/veiculos \
   -H "Content-Type: application/json" \
-  -d '{"placa":"MNO-3333","montadora":"DAF","modelo":"XF 530"}' >> "$LOGFILE"
+  -d '{"montadora":"Scania","modelo":"R 500","placa":"BBB-2222","status":"DISPONIVEL"}' >> $LOG_FILE
 
-# 3. Atualizar status de um veículo
-echo -e "\n\n3. ATUALIZANDO STATUS DO VEICULO ID 3..." >> "$LOGFILE"
-curl -s -i -X PATCH http://localhost:3000/api/v1/veiculos/3/status \
+# 3. Atualizar Veiculo 1 (PATCH)
+echo -e "\n\n[3] Atualizando Veiculo 1..." >> $LOG_FILE
+curl -s -i -X PATCH http://localhost:3006/api/v1/veiculos/1 \
   -H "Content-Type: application/json" \
-  -d '{"status":"EM_ROTA"}' >> "$LOGFILE"
+  -d '{"status":"EM_ROTA"}' >> $LOG_FILE
 
-# 4. Deletar um veículo
-echo -e "\n\n4. REMOVENDO VEICULO ID 4..." >> "$LOGFILE"
-curl -s -i -X DELETE http://localhost:3000/api/v1/veiculos/4 >> "$LOGFILE"
+# 4. Deletar Veiculo 2
+echo -e "\n\n[4] Deletando Veiculo 2..." >> $LOG_FILE
+curl -s -i -X DELETE http://localhost:3006/api/v1/veiculos/2 >> $LOG_FILE
 
-echo -e "\n\n=== FIM DOS TESTES - $(date) ===" >> "$LOGFILE"
-
-echo "Execucao concluida. Logs salvos em '$LOGFILE'."
+echo -e "\n\n=== TESTE CONCLUIDO ===" >> $LOG_FILE
