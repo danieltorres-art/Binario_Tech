@@ -4,115 +4,114 @@ const PORT = 3006;
 
 app.use(express.json());
 
-// Banco de dados em memoria inicial
 let veiculos = [
-  { id: 1, placa: 'ABC-1234', montadora: 'Scania', modelo: 'R450', status: 'DISPONIVEL' },
-  { id: 2, placa: 'XYZ-5678', montadora: 'Volvo', modelo: 'VM 270', status: 'EM_ROTA' }
+  { id: 1, placa: 'ABC-1234', montadora: 'Volvo', modelo: 'FH 540', status: 'DISPONIVEL' },
+  { id: 2, placa: 'XYZ-9876', montadora: 'Scania', modelo: 'R 450', status: 'EM_MANUTENCAO' }
 ];
 
-let proximoId = 3;
+let nextId = 3;
 
-// Exercicio 04 e Listagem Geral: GET /api/v1/veiculos (suporta query param ?status=)
+// ==========================================
+// [DESAFIO 1] GET /api/v1/veiculos (Com suporte a Query Param ?status=...)
+// ==========================================
 app.get('/api/v1/veiculos', (req, res) => {
   const { status } = req.query;
-
   if (status) {
-    const filtrados = veiculos.filter(
-      (v) => v.status.toUpperCase() === status.toUpperCase()
-    );
+    const filtrados = veiculos.filter(v => v.status.toUpperCase() === status.toUpperCase());
     return res.status(200).json(filtrados);
   }
-
   return res.status(200).json(veiculos);
 });
 
-// Exercicio 01: GET /api/v1/veiculos/:id (buscar veiculo por ID)
+// ==========================================
+// [DESAFIO 1 & 2] GET /api/v1/veiculos/:id (Com tratamento 404 Not Found)
+// ==========================================
 app.get('/api/v1/veiculos/:id', (req, res) => {
   const id = parseInt(req.params.id);
-  const veiculo = veiculos.find((v) => v.id === id);
+  const veiculo = veiculos.find(v => v.id === id);
 
   if (!veiculo) {
-    return res.status(404).json({ erro: 'Veiculo nao encontrado.' });
+    return res.status(404).json({ erro: 'Veículo não encontrado.' });
   }
 
   return res.status(200).json(veiculo);
 });
 
-// Exercicio 02 e Exercicio 03: POST /api/v1/veiculos (cadastrar veiculo com validacao)
+// ==========================================
+// [DESAFIO 1 & 2] POST /api/v1/veiculos (Validação 400 Bad Request e Criação 201 Created)
+// ==========================================
 app.post('/api/v1/veiculos', (req, res) => {
-  const { placa, montadora, modelo, status } = req.body;
+  const { placa, montadora, modelo } = req.body;
 
-  // Validação: verifica se os campos obrigatorios foram enviados
   if (!placa || !montadora || !modelo) {
-    return res.status(400).json({
-      erro: "Campos 'placa', 'montadora' e 'modelo' sao obrigatorios."
-    });
+    return res.status(400).json({ erro: 'Campos obrigatórios ausentes: placa, montadora e modelo.' });
   }
 
   const novoVeiculo = {
-    id: proximoId++,
+    id: nextId++,
     placa,
     montadora,
     modelo,
-    status: status || 'DISPONIVEL'
+    status: 'DISPONIVEL' // Status padrão exigido
   };
 
   veiculos.push(novoVeiculo);
   return res.status(201).json(novoVeiculo);
 });
 
-// Exercicio 05 e Exercicio 06: PATCH /api/v1/veiculos/:id (atualizacao parcial)
-app.patch('/api/v1/veiculos/:id', (req, res) => {
+// ==========================================
+// [DESAFIO 1 & 2] PATCH /api/v1/veiculos/:id/status (Atualização parcial com validação 400 e 404)
+// ==========================================
+app.patch('/api/v1/veiculos/:id/status', (req, res) => {
   const id = parseInt(req.params.id);
-  const veiculo = veiculos.find((v) => v.id === id);
+  const { status } = req.body;
 
+  const veiculo = veiculos.find(v => v.id === id);
   if (!veiculo) {
-    return res.status(404).json({ erro: 'Veiculo nao encontrado.' });
+    return res.status(404).json({ erro: 'Veículo não encontrado.' });
   }
 
-  Object.assign(veiculo, req.body);
+  if (!status) {
+    return res.status(400).json({ erro: 'O campo status é obrigatório.' });
+  }
+
+  veiculo.status = status;
   return res.status(200).json(veiculo);
 });
 
-// Exercicio 07: PUT /api/v1/veiculos/:id (substituicao completa dos dados)
+// ==========================================
+// [DESAFIO 3] PUT /api/v1/veiculos/:id (Substituição completa, 400, 404 e 200 OK)
+// ==========================================
 app.put('/api/v1/veiculos/:id', (req, res) => {
   const id = parseInt(req.params.id);
-  const index = veiculos.findIndex((v) => v.id === id);
-
-  if (index === -1) {
-    return res.status(404).json({ erro: 'Veiculo nao encontrado.' });
-  }
-
   const { placa, montadora, modelo, status } = req.body;
 
-  if (!placa || !montadora || !modelo) {
-    return res.status(400).json({
-      erro: "Campos 'placa', 'montadora' e 'modelo' sao obrigatorios para substituicao completa."
-    });
+  const index = veiculos.findIndex(v => v.id === id);
+  if (index === -1) {
+    return res.status(404).json({ erro: 'Veículo não encontrado.' });
   }
 
-  veiculos[index] = {
-    id,
-    placa,
-    montadora,
-    modelo,
-    status: status || 'DISPONIVEL'
-  };
+  if (!placa || !montadora || !modelo || !status) {
+    return res.status(400).json({ erro: 'Todos os campos são obrigatórios para substituição (placa, montadora, modelo, status).' });
+  }
 
+  veiculos[index] = { id, placa, montadora, modelo, status };
   return res.status(200).json(veiculos[index]);
 });
 
-// DELETE /api/v1/veiculos/:id (remover veiculo)
+// ==========================================
+// [DESAFIO 1 & 2] DELETE /api/v1/veiculos/:id (Remoção com tratamento 404)
+// ==========================================
 app.delete('/api/v1/veiculos/:id', (req, res) => {
   const id = parseInt(req.params.id);
-  const index = veiculos.findIndex((v) => v.id === id);
+  const index = veiculos.findIndex(v => v.id === id);
 
   if (index === -1) {
-    return res.status(404).json({ erro: 'Veiculo nao encontrado.' });
+    return res.status(404).json({ erro: 'Veículo não encontrado.' });
   }
 
-  veiculos.splice(index, 1);
-  return res.status(200).json({ mensagem: 'Veiculo removido com sucesso.' });
+  const veiculoRemovido = veiculos.splice(index, 1);
+  return res.status(200).json({ mensagem: 'Veículo removido com sucesso', veiculo: veiculoRemovido[0] });
 });
 
 app.listen(PORT, () => {

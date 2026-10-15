@@ -1,14 +1,12 @@
 {
-  "name": "prova_aula04",
+  "name": "frota-api",
   "version": "1.0.0",
-  "description": "Prova Pratica 2 (Aula 04) - PBE1",
+  "description": "API RESTful de Gestão de Frotas - PBE1",
   "main": "frota_api.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node frota_api.js"
   },
-  "keywords": [],
-  "type": "commonjs",
   "dependencies": {
-    "express": "^5.3.0"
+    "express": "^4.19.2"
   }
 }

@@ -1,53 +1,76 @@
-=== INICIANDO TESTE AUTOMATIZADO DE CRUD ===
-Wed Oct 14 07:34:52 PM UTC 2026
---------------------------------------------
+==========================================
+DATA DA EXECUÇÃO: qui 15 out 2026 13:29:05 -03
+==========================================
 
-[1] Cadastrando Veiculo 1...
-HTTP/1.1 201 Created
-X-Powered-By: Express
-Content-Type: application/json; charset=utf-8
-Content-Length: 90
-ETag: W/"5a-73quzSIf2/3UUS6A8TUPi9BwNQg"
-Date: Wed, 14 Oct 2026 19:34:52 GMT
-Connection: keep-alive
-Keep-Alive: timeout=5
+--- 1. CADASTRANDO VEÍCULOS (POST) ---
+{
+  "id": 5,
+  "placa": "VOL-5400",
+  "montadora": "Volvo",
+  "modelo": "Volvo FH 540",
+  "status": "DISPONIVEL"
+}
+{
+  "id": 6,
+  "placa": "MER-1122",
+  "montadora": "Mercedes-Benz",
+  "modelo": "Actros 2651",
+  "status": "DISPONIVEL"
+}
 
-{"id":3,"placa":"AAA-1111","montadora":"Mercedes","modelo":"Actros","status":"DISPONIVEL"}
+--- 2. LISTANDO APENAS DISPONÍVEIS (GET COM QUERY PARAM) ---
+[
+  {
+    "id": 1,
+    "placa": "VOL-9999",
+    "montadora": "Volvo",
+    "modelo": "FH 540 Atualizado",
+    "status": "DISPONIVEL"
+  },
+  {
+    "id": 3,
+    "placa": "VOL-5400",
+    "montadora": "Volvo",
+    "modelo": "Volvo FH 540 Reboque",
+    "status": "DISPONIVEL"
+  },
+  {
+    "id": 5,
+    "placa": "VOL-5400",
+    "montadora": "Volvo",
+    "modelo": "Volvo FH 540",
+    "status": "DISPONIVEL"
+  },
+  {
+    "id": 6,
+    "placa": "MER-1122",
+    "montadora": "Mercedes-Benz",
+    "modelo": "Actros 2651",
+    "status": "DISPONIVEL"
+  }
+]
 
-[2] Cadastrando Veiculo 2...
-HTTP/1.1 201 Created
-X-Powered-By: Express
-Content-Type: application/json; charset=utf-8
-Content-Length: 87
-ETag: W/"57-nZeQQWcRUaMu221oMWM0hmByioU"
-Date: Wed, 14 Oct 2026 19:34:52 GMT
-Connection: keep-alive
-Keep-Alive: timeout=5
+--- 3. ATUALIZANDO STATUS (PATCH) ---
+{
+  "id": 3,
+  "placa": "VOL-5400",
+  "montadora": "Volvo",
+  "modelo": "Volvo FH 540 Reboque",
+  "status": "EM_TRANSITO"
+}
 
-{"id":4,"placa":"BBB-2222","montadora":"Scania","modelo":"R 500","status":"DISPONIVEL"}
+--- 4. SUBSTITUIÇÃO COMPLETA (PUT) ---
+{
+  "id": 3,
+  "placa": "VOL-5400",
+  "montadora": "Volvo",
+  "modelo": "Volvo FH 540 Reboque",
+  "status": "DISPONIVEL"
+}
 
-[3] Atualizando Veiculo 1...
-HTTP/1.1 200 OK
-X-Powered-By: Express
-Content-Type: application/json; charset=utf-8
-Content-Length: 83
-ETag: W/"53-E6drEV/IW7M32OLBt9TlBkB4BB8"
-Date: Wed, 14 Oct 2026 19:34:52 GMT
-Connection: keep-alive
-Keep-Alive: timeout=5
+--- 5. REMOVENDO VEÍCULO (DELETE) ---
+{
+  "erro": "Veículo não encontrado."
+}
 
-{"id":1,"placa":"ABC-1234","montadora":"Scania","modelo":"R450","status":"EM_ROTA"}
-
-[4] Deletando Veiculo 2...
-HTTP/1.1 200 OK
-X-Powered-By: Express
-Content-Type: application/json; charset=utf-8
-Content-Length: 44
-ETag: W/"2c-hz6NkCUsxVuqm6fmIVcfDgATWmI"
-Date: Wed, 14 Oct 2026 19:34:52 GMT
-Connection: keep-alive
-Keep-Alive: timeout=5
-
-{"mensagem":"Veiculo removido com sucesso."}
-
-=== TESTE CONCLUIDO ===
+--- TESTES CONCLUÍDOS COM SUCESSO ---
